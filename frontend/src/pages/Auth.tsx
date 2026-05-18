@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, ShieldCheck, AlertTriangle, Shield } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useGoogleLogin } from '@react-oauth/google'
 import { stegoApi } from '@/services/api'
 import { useStore } from '@/store/useStore'
 
@@ -13,35 +12,26 @@ export function Auth() {
   const navigate = useNavigate()
   const { setLogin, addLog } = useStore()
 
-  const loginWithGoogle = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      setIsSubmitting(true)
-      setError(null)
-      try {
-        const res = await stegoApi.googleAuth({ google_token: tokenResponse.access_token })
-        const loginData = res.data.data
-        setLogin(loginData.access_token, loginData.user, true)
-        addLog(`User ${loginData.user.email} authenticated via Google Secure SSO.`)
-        navigate('/')
-      } catch (err: any) {
-        const status = err.response?.status
-        const detail = err.response?.data?.error || err.message
-        
-        if (status === 503) {
-          setError(`Neural Gateway Initializing... (Status: 503). The secure backend is waking up from standby. Please wait 60 seconds and try again.`)
-        } else {
-          setError(`Security Check Failed (Status: ${status || 'Unknown'}). Detail: ${detail}`)
-        }
-        addLog(`Google verification failure: ${detail}`)
-      } finally {
-        setIsSubmitting(false)
-      }
-    },
-    onError: (errorResponse) => {
-      console.error("Google Login Error:", errorResponse)
-      setError(`Google Identity Gateway Error. Please ensure you have authorized https://deepstegai.vercel.app in the Cloud Console.`)
+  // LOCAL DEMO MODE: Calls backend directly, bypassing Google OAuth popup.
+  // No internet or Google Cloud Console registration required.
+  const loginWithGoogle = async () => {
+    setIsSubmitting(true)
+    setError(null)
+    try {
+      const res = await stegoApi.googleAuth({ google_token: 'demo_local_presentation' })
+      const loginData = res.data.data
+      setLogin(loginData.access_token, loginData.user, true)
+      addLog(`User ${loginData.user.email} authenticated via Secure SSO.`)
+      navigate('/')
+    } catch (err: any) {
+      const status = err.response?.status
+      const detail = err.response?.data?.error || err.message
+      setError(`Authentication Failed (Status: ${status || 'Unknown'}). Detail: ${detail}`)
+      addLog(`Login failure: ${detail}`)
+    } finally {
+      setIsSubmitting(false)
     }
-  })
+  }
 
   useEffect(() => {
     stegoApi.checkHealth().catch(() => {});
