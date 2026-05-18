@@ -11,6 +11,58 @@ from utils.email_utils import send_password_reset_email
 
 auth_bp = Blueprint('auth', __name__)
 
+# ─────────────────────────────────────────────────────────────────────────────
+# DEMO GOOGLE AUTH — Local Presentation Mode
+# Works fully offline. No real Google OAuth required.
+# Frontend sends a google_token; we ignore it and auto-login a demo user.
+# ─────────────────────────────────────────────────────────────────────────────
+DEMO_EMAIL = "demo@deepstegai.local"
+DEMO_PASSWORD = "demo_presentation_2026"
+DEMO_NAME = "Demo User"
+
+@auth_bp.route('/google', methods=['POST'])
+def google_auth():
+    db = SessionLocal()
+    try:
+        # Find or create the demo user
+        user = db.query(User).filter(User.email == DEMO_EMAIL).first()
+        if not user:
+            user = User(
+                email=DEMO_EMAIL,
+                password_hash=hash_password(DEMO_PASSWORD),
+                credits=9999,
+                is_verified=True
+            )
+            db.add(user)
+            db.commit()
+            db.refresh(user)
+
+        # Ensure user is always verified and has credits for the demo
+        if not user.is_verified:
+            user.is_verified = True
+            db.commit()
+
+        access_token = create_access_token(data={
+            "user_id": str(user.id),
+            "email": user.email
+        })
+
+        return jsonify({
+            "success": True,
+            "data": {
+                "access_token": access_token,
+                "token_type": "bearer",
+                "user": user.to_dict()
+            },
+            "error": None
+        }), 200
+
+    except Exception as e:
+        db.rollback()
+        return jsonify({"success": False, "data": None, "error": str(e)}), 500
+    finally:
+        db.close()
+
 @auth_bp.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
