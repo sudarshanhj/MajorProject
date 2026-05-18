@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepStegAI | AI Steganography & Cybersecurity Platform</title>
+    <meta name="description" content="DeepStegAI: Advanced AI-powered steganography and steganalysis platform. Secure AES-256 encryption, adaptive edge embedding, and neural threat detection." />
+    <meta name="keywords" content="DeepStegAI, AI steganography, steganalysis, AES-256 image security, adaptive edge embedding, cybersecurity project" />
+    <meta name="google-site-verification" content="tx7htN2eh6wx2wCMD6UCCbnxbuM6fwk-pWkzAR3XPI8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://deepstegai.vercel.app/" />
+    <meta property="og:title" content="DeepStegAI | AI Steganography & Cybersecurity Platform" />
+    <meta property="og:description" content="DeepStegAI: Advanced AI-powered steganography and steganalysis platform. Secure AES-256 encryption, adaptive edge embedding, and neural threat detection." />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://deepstegai.vercel.app/" />
+    <meta property="twitter:title" content="DeepStegAI | AI Steganography & Cybersecurity Platform" />
+    <meta property="twitter:description" content="DeepStegAI: Advanced AI-powered steganography and steganalysis platform. Secure AES-256 encryption, adaptive edge embedding, and neural threat detection." />
+    <link rel="canonical" href="https://deepstegai.vercel.app/" />
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        try {
+          const store = JSON.parse(localStorage.getItem('stego-store'));
+          const theme = store && store.state && store.state.theme ? store.state.theme : 'dark';
+          document.documentElement.classList.add(theme);
+          document.documentElement.style.backgroundColor = theme === 'light' ? '#f0f4f8' : '#020202';
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.style.backgroundColor = '#020202';
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-[#020202] text-[#e2e2e2] overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

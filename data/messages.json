@@ -1,0 +1,137 @@
+[
+    {
+        "id": 2098,
+        "timestamp": "2026-03-13 15:48:56.072760",
+        "date": "2026-03-13",
+        "time": "15:48:56",
+        "name": "Srujan Aravalli",
+        "email": "aravalli88@gmail.com",
+        "message": "This is a great system."
+    },
+    {
+        "id": 3402,
+        "timestamp": "2026-03-17 22:49:57.559951",
+        "date": "2026-03-17",
+        "time": "22:49:57",
+        "name": "Test User",
+        "email": "test@example.com",
+        "message": "Hello from diagnostic script"
+    },
+    {
+        "id": 4420,
+        "timestamp": "2026-03-17 22:51:18.326429",
+        "date": "2026-03-17",
+        "time": "22:51:18",
+        "name": "Dhruv_rani",
+        "email": "Dhruv_rani@onlyfans.com",
+        "message": "I love men."
+    },
+    {
+        "id": 7038,
+        "timestamp": "2026-03-18 00:17:47.500058",
+        "date": "2026-03-18",
+        "time": "00:17:47",
+        "name": "Ram",
+        "email": "aravallisrujan88@gmail.com",
+        "message": "Test passed!"
+    },
+    {
+        "id": 8461,
+        "timestamp": "2026-03-18 01:10:15.132984",
+        "date": "2026-03-18",
+        "time": "01:10:15",
+        "name": "Srujan Aravalli",
+        "email": "aravallisrujan88@gmail.com",
+        "message": "This is a test mail to check notification!"
+    },
+    {
+        "id": 4636,
+        "timestamp": "2026-03-18 01:30:12.445625",
+        "date": "2026-03-18",
+        "time": "01:30:12",
+        "name": "Srujan aravalli",
+        "email": "aravallisrujan88@gmail.com",
+        "message": "2nd Test for notifications"
+    },
+    {
+        "id": 3757,
+        "timestamp": "2026-03-18 01:30:58.502808",
+        "date": "2026-03-18",
+        "time": "01:30:58",
+        "name": "aravalli srujan",
+        "email": "aravallisrujan88@gmail.com",
+        "message": "test 2 after refresh"
+    },
+    {
+        "id": 4133,
+        "timestamp": "2026-03-18 18:23:37.516051",
+        "date": "2026-03-18",
+        "time": "18:23:37",
+        "name": "Ram",
+        "email": "ram2026@gmail.com",
+        "message": "test subject 1!"
+    },
+    {
+        "id": 4292,
+        "timestamp": "2026-03-18 18:37:13.318170",
+        "date": "2026-03-18",
+        "time": "18:37:13",
+        "name": "Test User",
+        "email": "test@example.com",
+        "message": "Verification Pulse"
+    },
+    {
+        "id": 3990,
+        "timestamp": "2026-03-18 18:37:25.621280",
+        "date": "2026-03-18",
+        "time": "18:37:25",
+        "name": "Test User",
+        "email": "test@example.com",
+        "message": "Verification Pulse"
+    },
+    {
+        "id": 9332,
+        "timestamp": "2026-03-18 18:53:14.648235",
+        "date": "2026-03-18",
+        "time": "18:53:14",
+        "name": "srujan",
+        "email": "aravallisrujan88@gmail.com",
+        "message": "Test Subject 2!"
+    },
+    {
+        "id": 1559,
+        "timestamp": "2026-03-18 18:58:11.113506",
+        "date": "2026-03-18",
+        "time": "18:58:11",
+        "name": "Audit Agent",
+        "email": "agent@cyber.net",
+        "message": "Email system integrity check."
+    },
+    {
+        "id": 5201,
+        "timestamp": "2026-03-18 19:14:49.167086",
+        "date": "2026-03-18",
+        "time": "19:14:49",
+        "name": "Sudarshan",
+        "email": "hjsudarshan9480131847@gmail.com",
+        "message": "Test Subject 3!"
+    },
+    {
+        "id": 2534,
+        "timestamp": "2026-03-18 19:33:16.502814",
+        "date": "2026-03-18",
+        "time": "19:33:16",
+        "name": "Sudarshan HJ",
+        "email": "hjsudarshan9480131847@gmail.com",
+        "message": "Test subject 5!"
+    },
+    {
+        "id": 8376,
+        "timestamp": "2026-03-18 19:47:05.986483",
+        "date": "2026-03-18",
+        "time": "19:47:05",
+        "name": "Srujan",
+        "email": "aravallisrujan88@gmail.com",
+        "message": "Test Subject 6!"
+    }
+]

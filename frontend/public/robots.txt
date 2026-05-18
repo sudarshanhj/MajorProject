@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /embed
+Disallow: /extract
+Disallow: /analyze
+Disallow: /batch
+Disallow: /admin
+Disallow: /support
+Disallow: /auth
+
+Sitemap: https://deepstegai.vercel.app/sitemap.xml

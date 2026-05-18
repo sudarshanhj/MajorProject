@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #ff00ea;
+  --silver: #c0c0c0;
+  
+  /* Shared Defaults */
+  --radius: 1rem;
+}
+
+.dark {
+  --btn-text: #000000;
+  --primary: #00f2ff;
+  --primary-glow: rgba(0, 242, 255, 0.4);
+  --bg: #0a0a0a;
+  --bg-card: #161616;
+  --bg-sidebar: #121212;
+  --bg-header: rgba(10, 10, 10, 0.8);
+  --bg-canvas: #0f0f0f;
+  /* Slightly off-white: prevents eye fatigue vs pure #ffffff */
+  --fg: #EDEDF0;
+  --fg-dim: rgba(237, 237, 240, 0.55);
+  --fg-silver: #EDEDF0;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-active: rgba(0, 242, 255, 0.3);
+  --glass-bg: rgba(17, 17, 17, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --noise-opacity: 0.04;
+  --scrollbar: rgba(0, 242, 255, 0.3);
+  --scrollbar-hover: rgba(0, 242, 255, 0.6);
+  --fg-title: #EDEDF0;
+  --text-muted: rgba(237, 237, 240, 0.5);
+}
+
+.light {
+  --btn-text: #ffffff;
+  --primary: #0096a3;
+  --primary-glow: rgba(0, 150, 163, 0.35);
+  --bg-button: rgba(0, 150, 163, 0.1);
+  --bg-button-hover: rgba(0, 150, 163, 0.15);
+  --bg: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-sidebar: #f1f5f9;
+  --bg-header: rgba(248, 250, 252, 0.85);
+  --bg-canvas: #ffffff;
+  --fg: #0f172a;
+  --fg-dim: #64748b;
+  --fg-silver: #475569;
+  --border: rgba(15, 23, 42, 0.1);
+  --border-active: var(--primary);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(15, 23, 42, 0.1);
+  --noise-opacity: 0.02;
+  --scrollbar: rgba(0, 0, 0, 0.1);
+  --scrollbar-hover: rgba(0, 0, 0, 0.2);
+  --fg-title: #1e293b;
+  --text-muted: #64748b;
+}
+
+/* ─── Cursor: Only hide on the canvas and main desktop wrapper ─── */
+.cursor-override {
+  cursor: none !important;
+}
+
+/* ─── Restore native cursors for interactive elements ─── */
+button,
+a,
+[role='button'],
+.cursor-pointer,
+select {
+  cursor: pointer !important;
+}
+
+input,
+textarea {
+  cursor: text !important;
+}
+
+/* ─── Font smoothing ─── */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  /* GPU acceleration hint for the whole layer */
+  transform: translateZ(0);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Text selection ─── */
+::selection {
+  background: var(--primary-glow);
+  color: white;
+}
+
+/* ─── Input text ─── */
+input, textarea, select {
+  color: var(--fg);
+  caret-color: var(--primary);
+  font-family: 'JetBrains Mono', monospace;
+  background: transparent;
+}
+
+/* ─── Placeholder: softer tone ─── */
+::placeholder {
+  color: var(--fg-dim) !important;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Hide native browser password reveal/clear buttons */
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  display: none !important;
+}
+
+/* ─── Noise overlay ─── */
+/* z-index kept below text layers so it never degrades type rendering */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: var(--noise-opacity);
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+/* ─── Glass panel ─── */
+/* Added: inset bright rim (top/left) to simulate real glass catching light */
+.glass-panel {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid var(--glass-border);
+  /* Physical glass edge: bright top-left rim, subtle soft shadow base */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 1px 0 0 rgba(255, 255, 255, 0.04),
+    0 4px 24px rgba(0, 0, 0, 0.3);
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light .glass-panel {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 8px 30px rgba(0, 0, 0, 0.04),
+    0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+/* ─── Glow text: tighter, crisper neon ─── */
+.glow-text {
+  text-shadow:
+    0 0 6px var(--primary-glow),
+    0 0 14px var(--primary-glow);
+}
+
+/* ─── Glitch hover ─── */
+.glitch-hover {
+  transition: all 0.3s ease;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
+
+/* ─── White label utility ─── */
+.label-silver {
+  color: var(--fg-silver);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── Card Enhanced (Light Mode Only) ─── */
+.light .card-enhanced {
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.light .hover-reactive:hover {
+  background-color: var(--bg-button-hover) !important;
+  border-color: var(--primary) !important;
+}
+
+.light .hover-reactive:active {
+  transform: scale(0.98);
+}
+
+/* ─── Skeleton loading shimmer ─── */
+@keyframes skeleton-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--border) 25%,
+    rgba(255, 255, 255, 0.06) 50%,
+    var(--border) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+  border-radius: 0.5rem;
+}
+
+.light .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.06) 25%,
+    rgba(0,0,0,0.02) 50%,
+    rgba(0,0,0,0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}

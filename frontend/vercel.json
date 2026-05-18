@@ -1,0 +1,13 @@
+{
+  "buildCommand": "vite build",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://hjsudarshan-deepstegai-backend.hf.space/api/:path*"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

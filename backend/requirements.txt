@@ -1,0 +1,37 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2.0
+torchvision>=0.17.0
+numpy>=1.24
+opencv-python-headless>=4.9
+pillow>=10.3
+scikit-image>=0.22
+scikit-learn>=1.4
+einops>=0.8
+
+# Flask Backend
+flask>=3.0
+flask-cors>=4.0
+flask-limiter>=3.5.0
+filetype>=1.2
+markdown>=3.5
+
+# Auth & Security
+cryptography>=42.0
+bcrypt>=4.1
+pyjwt>=2.8
+passlib[bcrypt]>=1.7
+
+# Database
+sqlalchemy>=2.0
+pydantic[email]>=2.0
+psycopg2-binary>=2.9
+python-dotenv>=1.0
+
+# Server & Monitoring
+gunicorn>=21.2.0
+sentry-sdk>=1.40.0
+requests>=2.31.0
+
+# Payments & Cache
+razorpay>=1.4.1
+redis>=5.0
