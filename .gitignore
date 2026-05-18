@@ -149,7 +149,7 @@ Thumbs.db
 
 # Project Specific
 # AI Models (Allow stego_model.pth but block others if needed)
-!models/stego_model.pth
+!backend/models/stego_model.pth
 *.pth
 *.h5
 *.onnx
